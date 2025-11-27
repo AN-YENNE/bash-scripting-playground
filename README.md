@@ -122,8 +122,88 @@ cat <<- EOF
     how are you
 EOF
 ```
-
 ---
 
-Let me know if you'd like similar notes for other Bash features!
+## Commands and Builtins
 
+In Bash, many of the tools we use are **external commands**. These are separate programs installed on the system (for example: `/bin/ls`, `/usr/bin/echo`).
+Bash also provides **builtins**, which are commands that are part of the Bash shell itself (for example: `echo`, `printf`, `cd`, `enable`).
+
+### External Commands
+
+These are standalone programs that run outside of Bash. Examples include:
+
+```
+echo some text
+printf hello
+```
+
+When you run `echo`, Bash may use either its builtin version or the external command version located in `/usr/bin/echo`.
+
+### Builtin Commands
+
+These run inside Bash itself and do not require a separate executable file.
+
+To check whether a command is a builtin or an external command:
+
+```
+command -V echo
+```
+
+Example output:
+
+```
+echo is a shell builtin
+```
+
+This means Bash is using its internal version of `echo` by default.
+
+### Forcing Bash to use the external command
+
+Bash provides the `enable` command to control builtins.
+
+Disable the builtin version of `echo`:
+
+```
+enable -n echo
+```
+
+Check again:
+
+```
+command -V echo
+```
+
+Output:
+
+```
+echo is /usr/bin/echo
+```
+
+Now the external command (`/usr/bin/echo`) will run instead of the builtin.
+
+Re-enable the builtin version:
+
+```
+enable echo
+```
+
+### Example command usage
+
+```
+echo some text
+printf some
+echo hello
+command echo hello
+builtin echo hi
+```
+
+### Listing all Bash builtins
+
+```
+help -d
+```
+
+This prints a list of all builtin commands available in Bash.
+
+---
