@@ -207,3 +207,114 @@ help -d
 This prints a list of all builtin commands available in Bash.
 
 ---
+Here is a **simple, plain-text, well-explained version** you can copy directly into your README:
+
+---
+
+## Bash Expansions and Substitutions
+
+Bash performs expansions before running commands. These expansions replace symbols, patterns, or sequences with their evaluated values. This makes Bash flexible and powerful for generating file names, sequences, and paths.
+
+### 1. Tilde Expansion (`~`)
+
+The tilde expands to your home directory.
+
+Example:
+
+```
+echo ~
+/home/codespace
+```
+
+Check the current user:
+
+```
+whoami
+codespace
+```
+
+Bash also remembers the previous working directory.
+`~-` expands to the directory you were in before the current one.
+
+Example:
+
+```
+cd ..
+cd dir/
+echo ~-
+/workspaces/bash-scripting-playground/Files
+```
+
+---
+
+### 2. Brace Expansion
+
+Brace expansion creates sequences or sets of strings. It does **not** depend on existing files; it simply generates text.
+
+#### Number sequences:
+
+```
+echo {1..10}
+1 2 3 4 5 6 7 8 9 10
+```
+
+Reverse order:
+
+```
+echo {10..1}
+10 9 8 7 6 5 4 3 2 1
+```
+
+Zero-padded numbers:
+
+```
+echo {01..20}
+01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20
+```
+
+#### Alphabet sequences:
+
+```
+echo {a..z}
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+```
+
+Uppercase reverse:
+
+```
+echo {Z..A}
+Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+```
+
+#### Step values:
+
+```
+echo {1..30..3}
+1 4 7 10 13 16 19 22 25 28
+```
+
+```
+echo {a..z..2}
+a c e g i k m o q s u w y
+```
+
+#### Multiple braces (combinations):
+
+You can generate many filenames at once:
+
+```
+touch file{1..5}{a..d}
+```
+
+This creates:
+
+* file1a, file1b, file1c, file1d
+* file2a, file2b, file2c, file2d
+* file3a …
+* file4a …
+* file5a …
+
+Total of 20 files.
+
+---
+
