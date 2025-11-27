@@ -482,4 +482,52 @@ Result: HELLO FROM PYTHON!
 ```
 
 ---
+Here is a **simple, plain-text, well-explained version** you can paste directly into your README:
+
+---
+
+## Arithmetic Expansion
+
+Arithmetic expansion allows you to perform calculations directly inside Bash.
+The syntax is:
+
+```
+$(( expression ))
+```
+
+Bash supports integer arithmetic (no decimals), including addition, subtraction, multiplication, division, and more.
+
+### Examples
+
+Addition:
+
+```
+echo $((2+2))
+4
+```
+
+Subtraction:
+
+```
+echo $((4-2))
+2
+```
+
+Multiplication:
+
+```
+echo $((4*5))
+20
+```
+
+Integer division:
+
+```
+echo $((4/5))
+0
+```
+
+Because Bash uses **integer math**, `4/5` results in `0` (no decimals).
+
+---
 
