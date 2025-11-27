@@ -531,3 +531,65 @@ Because Bash uses **integer math**, `4/5` results in `0` (no decimals).
 
 ---
 
+Here is a **simple, plain-text, well-explained version** you can paste into your README:
+
+---
+
+## Creating a Bash Script File
+
+You can create and run your own Bash scripts directly from the terminal.
+
+### 1. Create a script file
+
+Use any text editor (e.g., `nano`) to create a file:
+
+```
+nano Hello.sh
+```
+
+Inside the file, add something like:
+
+```
+#!/bin/bash
+echo "Hello!"
+```
+
+Save and exit the editor.
+
+### 2. Run the script using Bash
+
+You can execute the script by explicitly calling `bash`:
+
+```
+bash ./Hello.sh
+```
+
+Example output:
+
+```
+Hello!
+```
+
+### 3. Make the script executable
+
+To run the script directly, first give it execute permission:
+
+```
+chmod +x ./Hello.sh
+```
+
+### 4. Run the script directly
+
+Now you can run it like any other command:
+
+```
+./Hello.sh
+```
+
+Output:
+
+```
+Hello!
+```
+
+---
