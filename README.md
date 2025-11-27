@@ -318,3 +318,104 @@ Total of 20 files.
 
 ---
 
+## Parameter Expansion
+
+Parameter expansion allows you to access and manipulate the value of variables in Bash. It is one of the most useful features for string handling in shell scripts.
+
+### Basic expansion
+
+Assign a value:
+
+```
+a="Hello World"
+```
+
+Display the value:
+
+```
+echo $a
+Hello World
+```
+
+Using braces (recommended for clarity):
+
+```
+echo ${a}
+Hello World
+```
+
+### Substring extraction
+
+Format:
+`${variable:offset:length}`
+Offsets start at 0.
+
+Example:
+
+```
+echo ${a:1:9}
+ello worl
+```
+
+This extracts 9 characters starting from index 1.
+
+### String replacement
+
+Replace first match:
+
+```
+echo ${a/World/Everybody}
+Hello Everybody
+```
+
+Using a variable:
+
+```
+greeting="Hello World"
+echo ${greeting/World/Friend}
+Hello Friend
+```
+
+The original variable is unchanged:
+
+```
+echo ${greeting}
+Hello World
+```
+
+Replace **all** occurrences:
+
+```
+echo ${greeting//e/a}
+Hallo World
+```
+
+Replace **first** occurrence only:
+
+```
+echo ${greeting/e/a}
+Hallo World
+```
+
+### Common mistake example
+
+If you forget braces when using substring syntax:
+
+```
+echo $greeting:4:3
+```
+
+This outputs:
+
+```
+Hello World:4:3
+```
+
+because Bash treats `:4:3` as literal text, not part of the expansion.
+Correct usage:
+
+```
+echo ${greeting:4:3}
+```
+
+---
