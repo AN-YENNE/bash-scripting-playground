@@ -593,3 +593,155 @@ Hello!
 ```
 
 ---
+Here is a **clean, plain-text, well-explained version** you can paste directly into your README:
+
+---
+
+## Printing Text With `echo`
+
+The `echo` command is used to print text, variables, and command output in Bash. It supports quoting, escaping, command substitution, and options like `-n`.
+
+### Printing variables
+
+```
+worldsize=big
+echo hello $worldsize world
+```
+
+Output:
+
+```
+hello big world
+```
+
+### Printing command substitution
+
+```
+echo "Kernel is $(uname -r)"
+```
+
+or without quotes:
+
+```
+echo Kernel is $(uname -r)
+```
+
+Both output:
+
+```
+Kernel is 6.8.0-1030-azure
+```
+
+### Parentheses and escaping
+
+Parentheses have meaning in Bash, so unescaped parentheses cause errors:
+
+```
+echo (Kernel) is $(uname -r)
+```
+
+Result:
+
+```
+bash: syntax error near unexpected token `Kernel'
+```
+
+Escape them to print literally:
+
+```
+echo \(Kernel\) is $(uname -r)
+```
+
+Output:
+
+```
+(Kernel) is 6.8.0-1030-azure
+```
+
+### Single quotes vs double quotes
+
+Single quotes prevent expansions:
+
+```
+echo '(Kernel) is $(uname -r)'
+```
+
+Output:
+
+```
+(Kernel) is $(uname -r)
+```
+
+Double quotes allow expansions:
+
+```
+echo "(Kernel) is $(uname -r)"
+```
+
+Output:
+
+```
+(Kernel) is 6.8.0-1030-azure
+```
+
+Escape `$` to prevent substitution:
+
+```
+echo "(Kernel) is \$(uname -r)"
+```
+
+Output:
+
+```
+(Kernel) is $(uname -r)
+```
+
+### Blank lines and multiple commands
+
+`echo` with no arguments prints an empty line:
+
+```
+echo
+```
+
+Multiple echo commands can be separated with `;`:
+
+```
+echo; echo Hi; echo
+```
+
+Output:
+
+```
+
+Hi
+
+```
+
+### No newline (`-n`)
+
+The `-n` option prevents `echo` from adding a newline at the end:
+
+```
+echo -n "No new line"
+```
+
+Output stays on the same line:
+
+```
+No new line
+```
+
+Combining multiple `echo -n`:
+
+```
+echo -n "Part of"; echo -n "Statement"
+```
+
+Output:
+
+```
+Part ofStatement
+```
+
+---
