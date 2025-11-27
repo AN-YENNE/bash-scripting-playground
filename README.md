@@ -6,3 +6,124 @@ Shows the PATH environment variable. This variable contains a list of directorie
 
 3. env
 Prints all environment variables available in the current shell session. Useful for understanding the environment configuration, debugging issues, and verifying variable values.
+
+---
+
+## Pipes and Redirections
+
+Pipes and redirections are powerful features in Bash for controlling where input comes from and where output goes. They help connect commands, process data, and manage files efficiently.
+
+### 1. Pipes (`|`)
+
+Pipes send the **output of one process** directly into the **input of another process**.
+
+Example:
+
+```
+ls | wc -l
+```
+
+`ls` lists files, and `wc -l` counts the number of lines. The pipe connects them so the output of `ls` becomes the input of `wc -l`.
+
+More examples:
+
+```
+cat file.txt
+```
+
+Displays the content of a file.
+
+```
+cat file.txt | less
+```
+
+Shows the file one page at a time using `less`.
+Press `q` to exit from `less`.
+
+```
+cat file.txt | wc
+```
+
+Sends the contents of `file.txt` to `wc`, which outputs line, word, and byte counts.
+
+---
+
+### 2. Redirections (`>`, `>>`, `<`, etc.)
+
+Redirections send input or output streams to/from files.
+There are three standard streams:
+
+* Standard Input (stdin) – 0
+* Standard Output (stdout) – 1
+* Standard Error (stderr) – 2
+
+#### Output redirection
+
+```
+ls > list.txt
+```
+
+Creates or overwrites `list.txt` with the output of `ls`.
+
+```
+ls >> list.txt
+```
+
+Appends the output to `list.txt` instead of overwriting it.
+
+#### Redirecting stdout and stderr separately
+
+```
+ls ./notreal 1>output.txt 2>error.txt
+```
+
+* `1>` sends normal output to `output.txt`
+* `2>` sends error messages to `error.txt`
+
+#### Input redirection
+
+```
+cat < list.txt
+```
+
+Feeds the contents of `list.txt` into the `cat` command (same result as `cat list.txt`).
+
+---
+
+### 3. Here Documents (Heredocs)
+
+A heredoc sends multiple lines of text as input to a command.
+
+Example:
+
+```
+cat << EndOfText
+Hi
+Hello
+Welcome
+EndOfText
+```
+
+Everything typed between `<< EndOfText` and the ending marker is passed to `cat`.
+
+---
+
+### 4. Removing leading tabs in a heredoc
+
+Add a `-` after `<<` to allow indentation using tabs.
+Tabs will be stripped automatically.
+
+Example:
+
+```
+cat <<- EOF
+    hi
+    hello
+    how are you
+EOF
+```
+
+---
+
+Let me know if you'd like similar notes for other Bash features!
+
