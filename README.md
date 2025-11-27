@@ -419,3 +419,67 @@ echo ${greeting:4:3}
 ```
 
 ---
+Here is a **simple, plain-text, well-explained version** you can copy directly into your README:
+
+---
+
+## Command Substitution
+
+Command substitution allows you to store or embed the **output of a command** inside another command.
+This is useful when you need dynamic values, such as system info, dates, or processed command output.
+
+The modern and recommended syntax is:
+
+```
+$(command)
+```
+
+### Basic example
+
+```
+uname -r
+6.8.0-1030-azure
+```
+
+Use command substitution inside a string:
+
+```
+echo "The kernel is $(uname -r)"
+```
+
+Output:
+
+```
+The kernel is 6.8.0-1030-azure
+```
+
+### Using other commands
+
+```
+echo "The Python version is $(python3 -V)"
+```
+
+Output:
+
+```
+The Python version is Python 3.12.1
+```
+
+### Passing command output through a pipeline
+
+Command substitution works with pipes as well:
+
+```
+echo "Result: $(python3 -c 'print("Hello from Python!")' | tr [a-z] [A-Z])"
+```
+
+This runs Python, prints a string, converts it to uppercase using `tr`, and substitutes the final result.
+
+Output:
+
+```
+Result: HELLO FROM PYTHON!
+```
+
+---
+
